@@ -18,7 +18,7 @@ const Body: React.FC<{ state: IState | null }> = (props) => {
 
     const burned = await contract?.burnToken(0, 1);
     toast("burning..");
-    await burned.wait();
+    await burned?.wait();
 
     console.log("Burned");
     toast("burned !!");
@@ -36,14 +36,17 @@ const Body: React.FC<{ state: IState | null }> = (props) => {
       console.log(Number(amt));
       const options = { value: Number(amt) };
 
+      const addressContract = String(await props.state?.signer?.getAddress());
+
       const txn = await contract?.mint(
-        await props.state!.signer?.getAddress(),
+        addressContract,
         0,
         1,
         options
       );
+
       toast("Transaction is processing..");
-      await txn.wait();
+      await txn?.wait();
 
       console.log("Minted NFT!");
       toast("Nft minted");
