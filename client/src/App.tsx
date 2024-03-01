@@ -3,7 +3,7 @@ import './App.css';
 import Body from './Body';
 import abi from './assets/ERC1155.json';
 import {BaseContract, ethers} from  "ethers";
-import {MyToken} from "../../typechain-types"
+import {MyToken} from "../typechain-types";
 
 interface IAccount {
   account : string | null;
